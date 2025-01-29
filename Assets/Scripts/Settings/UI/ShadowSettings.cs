@@ -18,7 +18,7 @@ public class ShadowSettings : SettingsPanel
     public override void InitializeUI()
     {
         // Initialize Shadow Distance Slider
-        InitializeSlider(shadowDistanceSlider, 50f, 1000f, Manager.graphicsSettingsSO.Data.ShadowDistance, OnShadowDistanceChanged);
+        InitializeSlider(shadowDistanceSlider, 50f, 1000f, Manager.Data.shadowDistance, OnShadowDistanceChanged);
 
         // Initialize Shadow Quality Dropdown
         InitializeDropdown(shadowQualityDropdown, new System.Collections.Generic.List<string>
@@ -26,15 +26,15 @@ public class ShadowSettings : SettingsPanel
             LocalizationManager.Instance.GetLocalizedText("ShadowQuality_Low"),
             LocalizationManager.Instance.GetLocalizedText("ShadowQuality_Medium"),
             LocalizationManager.Instance.GetLocalizedText("ShadowQuality_High")
-        }, (int)Manager.graphicsSettingsSO.Data.ShadowQuality, OnShadowQualityChanged);
+        }, (int)Manager.Data.shadowQuality, OnShadowQualityChanged);
 
         // Initialize Shadow Resolution Dropdown
         InitializeDropdown(shadowResolutionDropdown, new System.Collections.Generic.List<string> { "512", "1024", "2048", "4096" },
-            GetResolutionIndex(Manager.graphicsSettingsSO.Data.ShadowResolution), OnShadowResolutionChanged);
+            GetResolutionIndex(Manager.Data.shadowResolution), OnShadowResolutionChanged);
 
         // Initialize Shadow Cascades Dropdown
         InitializeDropdown(shadowCascadesDropdown, new System.Collections.Generic.List<string> { "1", "2", "4" },
-            GetCascadeIndex(Manager.graphicsSettingsSO.Data.ShadowCascades), OnShadowCascadesChanged);
+            GetCascadeIndex(Manager.Data.shadowCascades), OnShadowCascadesChanged);
 
         // Setup tooltips
         SetupTooltip(shadowDistanceTooltipTrigger, "ShadowDistance_Tooltip");
@@ -46,12 +46,12 @@ public class ShadowSettings : SettingsPanel
     protected override void UpdateUI()
     {
         // Update UI elements with current settings
-        shadowDistanceSlider.SetValueWithoutNotify(Manager.graphicsSettingsSO.Data.ShadowDistance);
-        shadowQualityDropdown.SetValueWithoutNotify((int)Manager.graphicsSettingsSO.Data.ShadowQuality);
+        shadowDistanceSlider.SetValueWithoutNotify(Manager.Data.shadowDistance);
+        shadowQualityDropdown.SetValueWithoutNotify((int)Manager.Data.shadowQuality);
         shadowQualityDropdown.RefreshShownValue();
-        shadowResolutionDropdown.SetValueWithoutNotify(GetResolutionIndex(Manager.graphicsSettingsSO.Data.ShadowResolution));
+        shadowResolutionDropdown.SetValueWithoutNotify(GetResolutionIndex(Manager.Data.shadowResolution));
         shadowResolutionDropdown.RefreshShownValue();
-        shadowCascadesDropdown.SetValueWithoutNotify(GetCascadeIndex(Manager.graphicsSettingsSO.Data.ShadowCascades));
+        shadowCascadesDropdown.SetValueWithoutNotify(GetCascadeIndex(Manager.Data.shadowCascades));
         shadowCascadesDropdown.RefreshShownValue();
     }
 
@@ -59,26 +59,22 @@ public class ShadowSettings : SettingsPanel
 
     public void OnShadowDistanceChanged(float value)
     {
-        Manager.graphicsSettingsSO.Data.ShadowDistance = value;
-        Manager.ScheduleApply();
+        Manager.SetShadowDistance(value);
     }
 
     public void OnShadowQualityChanged(int value)
     {
-        Manager.graphicsSettingsSO.Data.ShadowQuality = (ShadowFilteringQuality)value;
-        Manager.ScheduleApply();
+        Manager.SetShadowQuality(value);
     }
 
     public void OnShadowResolutionChanged(int index)
     {
-        Manager.graphicsSettingsSO.Data.ShadowResolution = GetResolutionFromIndex(index);
-        Manager.ScheduleApply();
+        Manager.SetShadowResolution(GetResolutionFromIndex(index));
     }
 
     public void OnShadowCascadesChanged(int index)
     {
-        Manager.graphicsSettingsSO.Data.ShadowCascades = GetCascadeCountFromIndex(index);
-        Manager.ScheduleApply();
+        Manager.SetShadowCascades(GetCascadeCountFromIndex(index));
     }
 
     // Helper functions to convert between dropdown index and resolution/cascade values

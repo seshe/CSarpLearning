@@ -24,8 +24,6 @@ public class GraphicsSettingsManager : MonoBehaviour
 
     private void Awake()
     {
-        LoadPresetSettings();
-
         // Load settings from file or use default values
         LoadSettings();
 
@@ -156,6 +154,8 @@ public class GraphicsSettingsManager : MonoBehaviour
     // Loads settings from a file or uses default values if the file doesn't exist
     public void LoadSettings()
     {
+        if (presetSettings == null)
+          LoadPresetSettings();
         bool loaded = settingsSerializer.LoadSettings(graphicsSettingsSO);
         if (!loaded)
         {
@@ -173,6 +173,8 @@ public class GraphicsSettingsManager : MonoBehaviour
 
     public void SetQualityPreset(int index)
     {
+        if (presetSettings == null)
+          LoadPresetSettings();
         if (index >= 0 && index < presetSettings.presets.Count)
         {
             PresetSetting preset = presetSettings.presets[index];
@@ -205,27 +207,181 @@ public class GraphicsSettingsManager : MonoBehaviour
 
     private void LoadPresetSettings()
     {
-        string path = "Assets/Settings/presets.json";
-        if (File.Exists(path))
+        presetSettings = Resources.Load<PresetSettings>("Settings/presets");
+
+        if (presetSettings == null)
         {
-            string jsonString = File.ReadAllText(path);
-            presetSettings = JsonUtility.FromJson<PresetSettings>(jsonString);
-        }
-        else
-        {
-            Debug.LogError("Preset settings file not found: " + path);
+            Debug.LogError("Could not find presets file at path: Settings/presets");
+            return;
         }
     }
-    
+
     // Додано методи для інкапсуляції
     public void SetTextureQuality(int quality)
     {
-        if (quality < 0 || quality > 3)
+        if (!Enum.IsDefined(typeof(SettingsData.TextureQuality), quality))
         {
             Debug.LogError("Invalid texture quality index: " + quality);
             return;
         }
         graphicsSettingsSO.Data.textureQuality = (SettingsData.TextureQuality)quality;
+        ScheduleApply();
+    }
+    
+    public void SetResolution(int width, int height, bool fullscreen)
+    {
+      graphicsSettingsSO.Data.resolution.width = width;
+      graphicsSettingsSO.Data.resolution.height = height;
+      graphicsSettingsSO.Data.isFullscreen = fullscreen;
+      Screen.SetResolution(width, height, fullscreen);
+      ScheduleApply();
+    }
+
+    public void SetFullscreen(bool fullscreen)
+    {
+      graphicsSettingsSO.Data.isFullscreen = fullscreen;
+      Screen.fullScreen = fullscreen;
+      ScheduleApply();
+    }
+
+    public void SetVSync(bool enabled)
+    {
+      graphicsSettingsSO.Data.vsync = enabled;
+      QualitySettings.vSyncCount = enabled ? 1 : 0;
+      ScheduleApply();
+    }
+    
+    public void SetShadowDistance(float distance)
+    {
+        graphicsSettingsSO.Data.shadowDistance = distance;
+        ScheduleApply();
+    }
+    
+    public void SetShadowQuality(int quality)
+    {
+        if (!Enum.IsDefined(typeof(ShadowFilteringQuality), quality))
+        {
+          Debug.LogError("Invalid shadow quality index: " + quality);
+          return;
+        }
+        graphicsSettingsSO.Data.shadowQuality = (ShadowFilteringQuality)quality;
+        ScheduleApply();
+    }
+    
+    public void SetShadowResolution(int resolution)
+    {
+        graphicsSettingsSO.Data.shadowResolution = resolution;
+        ScheduleApply();
+    }
+
+    public void SetShadowCascades(int cascades)
+    {
+        graphicsSettingsSO.Data.shadowCascades = cascades;
+        ScheduleApply();
+    }
+    
+    public void SetSSAOEnabled(bool enabled)
+    {
+        graphicsSettingsSO.Data.ssaoEnabled = enabled;
+        ScheduleApply();
+    }
+
+    public void SetSSAOQuality(int quality)
+    {
+        if (quality < 0 || quality > 2)
+        {
+          Debug.LogError("Invalid SSAO quality index: " + quality);
+          return;
+        }
+        graphicsSettingsSO.Data.ssaoQuality = quality;
+        ScheduleApply();
+    }
+
+    public void SetSSGIEnabled(bool enabled)
+    {
+        graphicsSettingsSO.Data.ssgiEnabled = enabled;
+        ScheduleApply();
+    }
+
+    public void SetSSGIQuality(int quality)
+    {
+        if (quality < 0 || quality > 2)
+        {
+          Debug.LogError("Invalid SSGI quality index: " + quality);
+          return;
+        }
+        graphicsSettingsSO.Data.ssgiQuality = quality;
+        ScheduleApply();
+    }
+
+    public void SetVolumetricLightingEnabled(bool enabled)
+    {
+        graphicsSettingsSO.Data.volumetricLightingEnabled = enabled;
+        ScheduleApply();
+    }
+
+    public void SetVolumetricLightingQuality(int quality)
+    {
+      if (quality < 0 || quality > 2)
+      {
+        Debug.LogError("Invalid Volumetric Lighting quality index: " + quality);
+        return;
+      }
+      graphicsSettingsSO.Data.volumetricLightingQuality = quality;
+      ScheduleApply();
+    }
+
+    public void SetBloomEnabled(bool enabled)
+    {
+        graphicsSettingsSO.Data.bloomEnabled = enabled;
+        ScheduleApply();
+    }
+
+    public void SetBloomIntensity(float intensity)
+    {
+        graphicsSettingsSO.Data.bloomIntensity = intensity;
+        ScheduleApply();
+    }
+
+    public void SetMotionBlurEnabled(bool enabled)
+    {
+        graphicsSettingsSO.Data.motionBlurEnabled = enabled;
+        ScheduleApply();
+    }
+
+    public void SetMotionBlurIntensity(float intensity)
+    {
+        graphicsSettingsSO.Data.motionBlurIntensity = intensity;
+        ScheduleApply();
+    }
+
+    public void SetDepthOfFieldEnabled(bool enabled)
+    {
+        graphicsSettingsSO.Data.depthOfFieldEnabled = enabled;
+        ScheduleApply();
+    }
+
+    public void SetDepthOfFieldFocusDistance(float distance)
+    {
+        graphicsSettingsSO.Data.depthOfFieldFocusDistance = distance;
+        ScheduleApply();
+    }
+
+    public void SetVignetteEnabled(bool enabled)
+    {
+        graphicsSettingsSO.Data.vignetteEnabled = enabled;
+        ScheduleApply();
+    }
+
+    public void SetVignetteIntensity(float intensity)
+    {
+        graphicsSettingsSO.Data.vignetteIntensity = intensity;
+        ScheduleApply();
+    }
+
+    public void SetLODBias(float bias)
+    {
+        graphicsSettingsSO.Data.lodBias = bias;
         ScheduleApply();
     }
 }

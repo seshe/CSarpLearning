@@ -81,9 +81,9 @@ public class RobotController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Get input
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        // Get input from InputManager
+        float horizontalInput = InputManager.Instance.GetHorizontalAxis();
+        float verticalInput = InputManager.Instance.GetVerticalAxis();
 
         // Calculate movement direction
         direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
@@ -234,6 +234,7 @@ public class RobotController : MonoBehaviour
         if (Physics.Raycast(cachedTransform.position, Vector3.down, out hit, groundCheckRadius * 2f, groundLayer))
         {
             groundNormal = hit.normal;
+            // Debug.DrawRay(hit.point, hit.normal, Color.green, 1f);
         }
         else
         {

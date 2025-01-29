@@ -1,9 +1,10 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 
 [Serializable]
-public class SettingsData
+public class PresetSettings : ScriptableObject
 {
     public enum QualityPreset
     {
@@ -70,8 +71,14 @@ public class SettingsData
     // Set settings to a specific preset
     public void SetToPreset(string presetName)
     {
-        PresetSettings presetSettings = Resources.Load<TextAsset>("presets").text.FromJson<PresetSettings>();
-        
+        PresetSettings presetSettings = Resources.Load<PresetSettings>("Settings/presets");
+
+        if (presetSettings == null)
+        {
+            Debug.LogError("Could not find presets file at path: " + "Settings/presets");
+            return;
+        }
+
         PresetSettings.PresetSetting preset = presetSettings.presets.Find(p => p.name == presetName);
 
         if (preset != null)

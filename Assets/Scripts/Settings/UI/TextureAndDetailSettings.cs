@@ -21,10 +21,10 @@ public class TextureAndDetailSettings : SettingsPanel
             LocalizationManager.Instance.GetLocalizedText("TextureQuality_Medium"),
             LocalizationManager.Instance.GetLocalizedText("TextureQuality_High"),
             LocalizationManager.Instance.GetLocalizedText("TextureQuality_Ultra")
-        }, (int)Manager.graphicsSettingsSO.Data.textureQuality, OnTextureQualityChanged);
+        }, (int)Manager.Data.textureQuality, OnTextureQualityChanged);
 
         // Initialize LOD Bias Slider
-        InitializeSlider(lodBiasSlider, 0.5f, 2f, Manager.graphicsSettingsSO.Data.LODBias, OnLODBiasChanged);
+        InitializeSlider(lodBiasSlider, 0.5f, 2f, Manager.Data.lodBias, OnLODBiasChanged);
 
         // Setup tooltips
         SetupTooltip(textureQualityTooltipTrigger, "TextureQuality_Tooltip");
@@ -34,27 +34,20 @@ public class TextureAndDetailSettings : SettingsPanel
     protected override void UpdateUI()
     {
         // Update UI elements with current settings
-        textureQualityDropdown.SetValueWithoutNotify((int)Manager.graphicsSettingsSO.Data.textureQuality);
+        textureQualityDropdown.SetValueWithoutNotify((int)Manager.Data.textureQuality);
         textureQualityDropdown.RefreshShownValue();
-        lodBiasSlider.SetValueWithoutNotify(Manager.graphicsSettingsSO.Data.LODBias);
+        lodBiasSlider.SetValueWithoutNotify(Manager.Data.lodBias);
     }
 
     // --- Event Handlers for UI changes ---
 
     public void OnTextureQualityChanged(int index)
     {
-        if (!System.Enum.IsDefined(typeof(SettingsData.TextureQuality), index))
-        {
-            Debug.LogError("Invalid texture quality index: " + index);
-            return;
-        }
-
         Manager.SetTextureQuality(index);
     }
 
     public void OnLODBiasChanged(float value)
     {
-        Manager.graphicsSettingsSO.Data.LODBias = value;
-        Manager.ScheduleApply();
+        Manager.SetLODBias(value);
     }
 }

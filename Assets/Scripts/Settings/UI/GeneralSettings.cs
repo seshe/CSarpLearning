@@ -32,10 +32,10 @@ public class GeneralSettings : SettingsPanel
         SetupResolutionDropdown();
 
         // Setup Fullscreen Toggle
-        InitializeToggle(fullscreenToggle, Manager.graphicsSettingsSO.Data.IsFullscreen, OnFullscreenModeChanged);
+        InitializeToggle(fullscreenToggle, Manager.Data.isFullscreen, OnFullscreenModeChanged);
 
         // Setup VSync Toggle
-        InitializeToggle(vsyncToggle, Manager.graphicsSettingsSO.Data.VSync, OnVSyncChanged);
+        InitializeToggle(vsyncToggle, Manager.Data.vsync, OnVSyncChanged);
 
         // Setup Quality Preset Dropdown
         SetupQualityPresetDropdown();
@@ -49,25 +49,30 @@ public class GeneralSettings : SettingsPanel
 
     private void SetupResolutionDropdown()
     {
+        // Filter out resolutions with refresh rate of 0
         resolutions = Screen.resolutions
-            .GroupBy(r => new { r.width, r.height })
+            .Where(r => r.refreshRate != 0)
+            .GroupBy(r => new { r.width, r.height, r.refreshRate })
             .Select(g => g.First())
             .ToArray();
+
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
         int currentResolutionIndex = 0;
+
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
+            // Format the resolution string to include refresh rate
+            string option = $"{resolutions[i].width} x {resolutions[i].height} @ {resolutions[i].refreshRate}Hz";
             options.Add(option);
 
-            if (resolutions[i].width == Manager.graphicsSettingsSO.Data.Resolution.width &&
-                resolutions[i].height == Manager.graphicsSettingsSO.Data.Resolution.height)
+            if (resolutions[i].width == Manager.Data.Resolution.width &&
+                resolutions[i].height == Manager.Data.Resolution.height)
             {
                 currentResolutionIndex = i;
             }
         }
-        
+
         InitializeDropdown(resolutionDropdown, options, currentResolutionIndex, OnResolutionChanged);
     }
 
@@ -79,7 +84,7 @@ public class GeneralSettings : SettingsPanel
             presetOptions.Add(LocalizationManager.Instance.GetLocalizedText("Preset_" + preset.name));
         }
 
-        InitializeDropdown(qualityPresetDropdown, presetOptions, (int)Manager.graphicsSettingsSO.Data.qualityPreset, OnQualityPresetChanged);
+        InitializeDropdown(qualityPresetDropdown, presetOptions, (int)Manager.Data.qualityPreset, OnQualityPresetChanged);
     }
 
     protected override void UpdateUI()
@@ -87,19 +92,19 @@ public class GeneralSettings : SettingsPanel
         // Update UI elements with current settings
         for (int i = 0; i < resolutions.Length; i++)
         {
-            if (resolutions[i].width == Manager.graphicsSettingsSO.Data.Resolution.width &&
-                resolutions[i].height == Manager.graphicsSettingsSO.Data.Resolution.height)
+            if (resolutions[i].width == Manager.Data.Resolution.width &&
+                resolutions[i].height == Manager.Data.Resolution.height)
             {
                 resolutionDropdown.SetValueWithoutNotify(i);
                 break;
             }
         }
         resolutionDropdown.RefreshShownValue();
-        fullscreenToggle.isOn = Manager.graphicsSettingsSO.Data.IsFullscreen;
-        vsyncToggle.isOn = Manager.graphicsSettingsSO.Data.VSync;
+        fullscreenToggle.SetIsOnWithoutNotify(Manager.Data.isFullscreen);
+        vsyncToggle.SetIsOnWithoutNotify(Manager.Data.vsync);
 
         // Update Quality Preset Dropdown
-        qualityPresetDropdown.SetValueWithoutNotify((int)Manager.graphicsSettingsSO.Data.qualityPreset);
+        qualityPresetDropdown.SetValueWithoutNotify((int)Manager.Data.qualityPreset);
         qualityPresetDropdown.RefreshShownValue();
     }
 
@@ -107,29 +112,21 @@ public class GeneralSettings : SettingsPanel
 
     public void OnResolutionChanged(int resolutionIndex)
     {
-        Manager.graphicsSettingsSO.Data.Resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolutions[resolutionIndex].width, resolutions[resolutionIndex].height, Screen.fullScreen);
-        Manager.ScheduleApply();
+        Manager.SetResolution(resolutions[resolutionIndex].width, resolutions[resolutionIndex].height, Manager.Data.isFullscreen);
     }
 
     public void OnFullscreenModeChanged(bool isFullscreen)
     {
-        Manager.graphicsSettingsSO.Data.IsFullscreen = isFullscreen;
-        Screen.fullScreen = isFullscreen;
-        Manager.ScheduleApply();
+        Manager.SetFullscreen(isFullscreen);
     }
 
     public void OnVSyncChanged(bool isEnabled)
     {
-        Manager.graphicsSettingsSO.Data.VSync = isEnabled;
-        QualitySettings.vSyncCount = isEnabled ? 1 : 0;
-        Manager.ScheduleApply();
+        Manager.SetVSync(isEnabled);
     }
 
     public void OnQualityPresetChanged(int index)
     {
-        Manager.graphicsSettingsSO.Data.qualityPreset = (SettingsData.QualityPreset)index;
         Manager.SetQualityPreset(index);
-        Manager.ScheduleApply();
     }
 }

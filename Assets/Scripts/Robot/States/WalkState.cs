@@ -19,14 +19,14 @@ public class WalkState : BaseState
         robotController.Move(robotController.GetMovementDirection());
 
         // Rotate the robot
-        robotController.Rotate(Input.GetAxis("Horizontal"), robotController.GetMovementDirection());
+    	robotController.Rotate(InputManager.Instance.GetHorizontalAxis(), robotController.GetMovementDirection());
     }
 
     public override void UpdateLogic()
     {
         // Calculate movement direction only when needed
         Vector3 movementDirection = robotController.GetMovementDirection();
-        if (Input.GetButtonDown("Jump") && robotController.IsGrounded())
+    	if (InputManager.Instance.GetJumpButtonDown() && robotController.IsGrounded())
         {
             robotController.ChangeState(RobotStateType.Jump);
         }

@@ -26,28 +26,28 @@ public class EffectsSettings : SettingsPanel
     public override void InitializeUI()
     {
         // Initialize Bloom Toggle
-        InitializeToggle(bloomToggle, Manager.graphicsSettingsSO.Data.BloomEnabled, OnBloomEnabledChanged);
+        InitializeToggle(bloomToggle, Manager.Data.bloomEnabled, OnBloomEnabledChanged);
 
         // Initialize Bloom Intensity Slider
-        InitializeSlider(bloomIntensitySlider, 0f, 1f, Manager.graphicsSettingsSO.Data.BloomIntensity, OnBloomIntensityChanged);
+        InitializeSlider(bloomIntensitySlider, 0f, 1f, Manager.Data.bloomIntensity, OnBloomIntensityChanged);
 
         // Initialize Motion Blur Toggle
-        InitializeToggle(motionBlurToggle, Manager.graphicsSettingsSO.Data.MotionBlurEnabled, OnMotionBlurEnabledChanged);
+        InitializeToggle(motionBlurToggle, Manager.Data.motionBlurEnabled, OnMotionBlurEnabledChanged);
 
         // Initialize Motion Blur Intensity Slider
-        InitializeSlider(motionBlurIntensitySlider, 0f, 1f, Manager.graphicsSettingsSO.Data.MotionBlurIntensity, OnMotionBlurIntensityChanged);
+        InitializeSlider(motionBlurIntensitySlider, 0f, 1f, Manager.Data.motionBlurIntensity, OnMotionBlurIntensityChanged);
 
         // Initialize Depth of Field Toggle
-        InitializeToggle(depthOfFieldToggle, Manager.graphicsSettingsSO.Data.DepthOfFieldEnabled, OnDepthOfFieldEnabledChanged);
+        InitializeToggle(depthOfFieldToggle, Manager.Data.depthOfFieldEnabled, OnDepthOfFieldEnabledChanged);
 
         // Initialize Depth of Field Intensity Slider
-        InitializeSlider(depthOfFieldIntensitySlider, 0f, 10f, Manager.graphicsSettingsSO.Data.DepthOfFieldFocusDistance, OnDepthOfFieldIntensityChanged);
+        InitializeSlider(depthOfFieldIntensitySlider, 0f, 10f, Manager.Data.depthOfFieldFocusDistance, OnDepthOfFieldIntensityChanged);
 
         // Initialize Vignette Toggle
-        InitializeToggle(vignetteToggle, Manager.graphicsSettingsSO.Data.VignetteEnabled, OnVignetteEnabledChanged);
+        InitializeToggle(vignetteToggle, Manager.Data.vignetteEnabled, OnVignetteEnabledChanged);
 
         // Initialize Vignette Intensity Slider
-        InitializeSlider(vignetteIntensitySlider, 0f, 1f, Manager.graphicsSettingsSO.Data.VignetteIntensity, OnVignetteIntensityChanged);
+        InitializeSlider(vignetteIntensitySlider, 0f, 1f, Manager.Data.vignetteIntensity, OnVignetteIntensityChanged);
 
         // Setup tooltips
         SetupTooltip(bloomTooltipTrigger, "Bloom_Tooltip");
@@ -63,63 +63,55 @@ public class EffectsSettings : SettingsPanel
     protected override void UpdateUI()
     {
         // Update UI elements with current settings
-        bloomToggle.SetIsOnWithoutNotify(Manager.graphicsSettingsSO.Data.BloomEnabled);
-        bloomIntensitySlider.SetValueWithoutNotify(Manager.graphicsSettingsSO.Data.BloomIntensity);
-        motionBlurToggle.SetIsOnWithoutNotify(Manager.graphicsSettingsSO.Data.MotionBlurEnabled);
-        motionBlurIntensitySlider.SetValueWithoutNotify(Manager.graphicsSettingsSO.Data.MotionBlurIntensity);
-        depthOfFieldToggle.SetIsOnWithoutNotify(Manager.graphicsSettingsSO.Data.DepthOfFieldEnabled);
-        depthOfFieldIntensitySlider.SetValueWithoutNotify(Manager.graphicsSettingsSO.Data.DepthOfFieldFocusDistance);
-        vignetteToggle.SetIsOnWithoutNotify(Manager.graphicsSettingsSO.Data.VignetteEnabled);
-        vignetteIntensitySlider.SetValueWithoutNotify(Manager.graphicsSettingsSO.Data.VignetteIntensity);
+        bloomToggle.SetIsOnWithoutNotify(Manager.Data.bloomEnabled);
+        bloomIntensitySlider.SetValueWithoutNotify(Manager.Data.bloomIntensity);
+        motionBlurToggle.SetIsOnWithoutNotify(Manager.Data.motionBlurEnabled);
+        motionBlurIntensitySlider.SetValueWithoutNotify(Manager.Data.motionBlurIntensity);
+        depthOfFieldToggle.SetIsOnWithoutNotify(Manager.Data.depthOfFieldEnabled);
+        depthOfFieldIntensitySlider.SetValueWithoutNotify(Manager.Data.depthOfFieldFocusDistance);
+        vignetteToggle.SetIsOnWithoutNotify(Manager.Data.vignetteEnabled);
+        vignetteIntensitySlider.SetValueWithoutNotify(Manager.Data.vignetteIntensity);
     }
 
     // --- Event Handlers for UI changes ---
 
     public void OnBloomEnabledChanged(bool isEnabled)
     {
-        Manager.graphicsSettingsSO.Data.BloomEnabled = isEnabled;
-        Manager.ScheduleApply();
+        Manager.SetBloomEnabled(isEnabled);
     }
 
     public void OnBloomIntensityChanged(float value)
     {
-        Manager.graphicsSettingsSO.Data.BloomIntensity = value;
-        Manager.ScheduleApply();
+        Manager.SetBloomIntensity(value);
     }
 
     public void OnMotionBlurEnabledChanged(bool isEnabled)
     {
-        Manager.graphicsSettingsSO.Data.MotionBlurEnabled = isEnabled;
-        Manager.ScheduleApply();
+        Manager.SetMotionBlurEnabled(isEnabled);
     }
 
     public void OnMotionBlurIntensityChanged(float value)
     {
-        Manager.graphicsSettingsSO.Data.MotionBlurIntensity = value;
-        Manager.ScheduleApply();
+        Manager.SetMotionBlurIntensity(value);
     }
 
     public void OnDepthOfFieldEnabledChanged(bool isEnabled)
     {
-        Manager.graphicsSettingsSO.Data.DepthOfFieldEnabled = isEnabled;
-        Manager.ScheduleApply();
+        Manager.SetDepthOfFieldEnabled(isEnabled);
     }
 
     public void OnDepthOfFieldIntensityChanged(float value)
     {
-        Manager.graphicsSettingsSO.Data.DepthOfFieldFocusDistance = value;
-        Manager.ScheduleApply();
+        Manager.SetDepthOfFieldFocusDistance(value);
     }
 
     public void OnVignetteEnabledChanged(bool isEnabled)
     {
-        Manager.graphicsSettingsSO.Data.VignetteEnabled = isEnabled;
-        Manager.ScheduleApply();
+        Manager.SetVignetteEnabled(isEnabled);
     }
 
     public void OnVignetteIntensityChanged(float value)
     {
-        Manager.graphicsSettingsSO.Data.VignetteIntensity = value;
-        Manager.ScheduleApply();
+        Manager.SetVignetteIntensity(value);
     }
 }

@@ -17,11 +17,11 @@ public class IdleState : BaseState
         // Calculate movement direction only when needed
         Vector3 movementDirection = robotController.GetMovementDirection();
 
-        if (Input.GetButtonDown("Jump") && robotController.IsGrounded())
+        if (InputManager.Instance.GetJumpButtonDown() && robotController.IsGrounded())
         {
             robotController.ChangeState(RobotStateType.Jump);
         }
-        else if (movementDirection.magnitude > 0.1f)
+    else if (robotController.GetMovementDirection().magnitude > 0.1f)
         {
             robotController.ChangeState(RobotStateType.Walk);
         }
