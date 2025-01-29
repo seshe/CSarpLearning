@@ -1,0 +1,326 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772e54f99554d5b458d25530c44d9990, type: 3}
+  m_Name: HDRenderPipelineAsset
+  m_EditorClassIdentifier:
+  serializedVersion: 17
+  m_Valid: 1
+  m_HDRPAssetVersion: 15
+  renderPipelineResources: {fileID: 0}
+  renderPipelineRayTracingResources: {fileID: 0}
+  lightLoopSettings:
+    availableBoxLightShapesForCookies: 3
+    cookieAtlasSize: 2048
+    cookieAtlasLastValidLightmapSize: 2048
+    pointCookieSize: 128
+    reflectionCubemapSize: 256
+    planarReflectionAtlasSize: 2048
+    maxPlanarReflectionOnScreen: 16
+    maxLightsOnScreen:
+      directional: 4
+      punctual: 128
+      area: 64
+      reflectionProbe: 128
+      planarReflection: 64
+    maxLocalVolumetricFogOnScreen: 32
+    maxShadowOnScreen: 64
+    maxShadowRequests: 128
+    supportFabricConvolution: 0
+    shadowFilteringQuality: 1
+    supportShadowMask: 1
+  ditheringCrossFade: 0
+  lodBias:
+    m_Mode: 0
+    m_Value: 1.2
+  lodBiasMode: 0
+  maximumLODLevel:
+    m_Mode: 0
+    m_Value: 0
+  maximumLODLevelMode: 0
+  materialQuality: 0
+  renderingLayerMaskNames:
+  - Nothing
+  - Everything
+  - Transparent FX
+  - Ignore Raycast
+  - Water
+  - UI
+  - LightLayerDefault
+  - LightLayer1
+  - LightLayer2
+  - LightLayer3
+  - LightLayer4
+  - LightLayer5
+  - LightLayer6
+  - LightLayer7
+  - PostProcessing
+  volumeLayerMask:
+    m_Bits: 4294967295
+  volumeProfile: {fileID: 0}
+  defaultVolumeProfile: {fileID: 0}
+  postProcessingQualitySettings:
+    bloom: 1
+    chromaticAberration: 0
+    colorGrading: 1
+    depthOfField: 0
+    filmGrain: 0
+    lensDistortion: 0
+    motionBlur: 0
+    paniniProjection: 0
+    vignette: 0
+  defaultFrameSettings:
+    m_RenderingPath: 1
+    litShaderMode: 1
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDBuffer: 1
+    enableRoughRefraction: 1
+    enableDistortion: 0
+    enableTransparentPostpass: 0
+    enableMSAA: 0
+    msaaSampleCount: 0
+    enableAlphaToMask: 0
+    enableAsyncCompute: 0
+    supportRuntimeDebugDisplay: 1
+    supportedLitShaderMode: 2
+    m_EditModePath: 0
+    m_EditModeLitShaderMode: 0
+    m_EditModeMotionVectors: 0
+    m_EditModeObjectMotionVectors: 0
+    m_EditModeDBuffer: 0
+    m_EditModeRoughRefraction: 0
+    m_EditModeDistortion: 0
+    m_EditModeTransparentPostpass: 0
+    m_EditModeMSAA: 0
+    m_EditModeAlphaToMask: 0
+    m_EditModeAsyncCompute: 0
+    m_EditModeRuntimeDebugDisplay: 0
+    m_EditModeSupportedLitShaderMode: 0
+  frameSettingsHistory:
+  - settings:
+      serializedVersion: 2
+      renderingPathCustomFrameSettings:
+        serializedVersion: 2
+        m_RenderingPath: 0
+        litShaderMode: 0
+        enableTransparentPrepass: 0
+        enableMotionVectors: 0
+        enableObjectMotionVectors: 0
+        enableDBuffer: 0
+        enableRoughRefraction: 0
+        enableDistortion: 0
+        enableTransparentPostpass: 0
+        enableMSAA: 0
+        msaaSampleCount: 0
+        enableAlphaToMask: 0
+        enableAsyncCompute: 0
+        supportRuntimeDebugDisplay: 0
+        supportedLitShaderMode: 0
+      lightLoopCustomFrameSettings:
+        serializedVersion: 2
+        overrideShadowFiltering: 0
+        shadowFilteringQuality: 0
+    name: (Camera)
+  - settings:
+      serializedVersion: 2
+      renderingPathCustomFrameSettings:
+        serializedVersion: 2
+        m_RenderingPath: 0
+        litShaderMode: 0
+        enableTransparentPrepass: 0
+        enableMotionVectors: 0
+        enableObjectMotionVectors: 0
+        enableDBuffer: 1
+        enableRoughRefraction: 0
+        enableDistortion: 0
+        enableTransparentPostpass: 0
+        enableMSAA: 0
+        msaaSampleCount: 0
+        enableAlphaToMask: 0
+        enableAsyncCompute: 0
+        supportRuntimeDebugDisplay: 1
+        supportedLitShaderMode: 0
+      lightLoopCustomFrameSettings:
+        serializedVersion: 2
+        overrideShadowFiltering: 0
+        shadowFilteringQuality: 0
+    name: (Reflection Probe)
+  - settings:
+      serializedVersion: 2
+      renderingPathCustomFrameSettings:
+        serializedVersion: 2
+        m_RenderingPath: 0
+        litShaderMode: 0
+        enableTransparentPrepass: 0
+        enableMotionVectors: 0
+        enableObjectMotionVectors: 0
+        enableDBuffer: 0
+        enableRoughRefraction: 0
+        enableDistortion: 0
+        enableTransparentPostpass: 0
+        enableMSAA: 0
+        msaaSampleCount: 0
+        enableAlphaToMask: 0
+        enableAsyncCompute: 0
+        supportRuntimeDebugDisplay: 1
+        supportedLitShaderMode: 0
+      lightLoopCustomFrameSettings:
+        serializedVersion: 2
+        overrideShadowFiltering: 0
+        shadowFilteringQuality: 0
+    name: (Default)
+  postProcessLayerDefaultFrameSettings:
+    antialiasingMode: 2
+    dithering: 1
+    fog: 0
+    stopNaNs: 0
+    colorGradingLutSize: 32
+    colorGradingHDR: 0
+    colorGradingLDR: 1
+    colorGradingUseLinearLight: 0
+  section-Rendering-548f92950078684469887726e69a3441:
+    enableDynamicResolution: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDBuffer: 1
+    enableRoughRefraction: 1
+    enableDistortion: 0
+    enableTransparentPostpass: 0
+    enableMSAA: 0
+    msaaSampleCount: 0
+    enableAlphaToMask: 0
+    enableAsyncCompute: 0
+    supportRuntimeDebugDisplay: 1
+  section-Lighting-548f92950078684469887726e69a3441:
+    supportScreenSpaceShadows: 0
+    supportVolumetrics: 1
+    enableBakeShadowMask: 1
+  section-Materials-548f92950078684469887726e69a3441:
+    supportDecals: 1
+    supportSurfaceGradient: 1
+  section-Reflections-548f92950078684469887726e69a3441:
+    lowResTransparent: 0
+  section-LightLoop-548f92950078684469887726e69a3441:
+    availableBoxLightShapesForCookies: 3
+    cookieAtlasSize: 2048
+    cookieAtlasLastValidLightmapSize: 2048
+    pointCookieSize: 128
+    reflectionCubemapSize: 256
+    planarReflectionAtlasSize: 2048
+    maxPlanarReflectionOnScreen: 16
+    maxLightsOnScreen:
+      directional: 4
+      punctual: 128
+      area: 64
+      reflectionProbe: 128
+      planarReflection: 64
+    maxLocalVolumetricFogOnScreen: 32
+    maxShadowOnScreen: 64
+    maxShadowRequests: 128
+    supportFabricConvolution: 0
+    shadowFilteringQuality: 1
+    supportShadowMask: 1
+  section-Decals-548f92950078684469887726e69a3441:
+    drawDistance: 1000
+    atlasWidth: 2048
+    atlasHeight: 2048
+    maxDrawOnScreen: 512
+  section-DynamicResolution-548f92950078684469887726e69a3441:
+    dynamicResolutionSettings:
+      enabled: 0
+      dynamicResType: 2
+      softwareUpsamplingFilter: 1
+      forcePercentage: 0
+      forceResolution: 0
+      upsampleFilter: 2
+      lowResTransparencyUpsampling: 0
+      minPercentage: 50
+      maxPercentage: 100
+      dynResUpsampleWeight: 1
+      maxScreenPercentage: 150
+  section-PostProcess-548f92950078684469887726e69a3441:
+    postProcessingQualitySettings:
+      bloom: 1
+      chromaticAberration: 0
+      colorGrading: 1
+      depthOfField: 0
+      filmGrain: 0
+      lensDistortion: 0
+      motionBlur: 0
+      paniniProjection: 0
+      vignette: 0
+  diffusionProfileSettingsList:
+  - {fileID: 11400000, guid: 05d77675d97f07142b75a246477d7e72, type: 2}
+  - {fileID: 11400000, guid: 65924d2e72968b5449459d611843349e, type: 2}
+  - {fileID: 11400000, guid: 406e715ef2d600f49954d6d3cd558b05, type: 2}
+  - {fileID: 11400000, guid: 38f86f7b814f238448a76518744dd3e9, type: 2}
+  - {fileID: 11400000, guid: 80f87838678f00641960450f85f70d7e, type: 2}
+  - {fileID: 11400000, guid: 03c8159b478026e49a17bd5197d9ea24, type: 2}
+  - {fileID: 11400000, guid: 9d97244d8390f804ba6196b4e227d66e, type: 2}
+  - {fileID: 11400000, guid: c72f65db089dc5449a864c72a55d2249, type: 2}
+  - {fileID: 11400000, guid: 7870969f1a5315749994b49c461c77f9, type: 2}
+  - {fileID: 11400000, guid: e9a54f99254605144b4084d5d2d78b91, type: 2}
+  - {fileID: 11400000, guid: 82b6d27894c54fa418d474be44d8d3f6, type: 2}
+  - {fileID: 11400000, guid: e75414407d6e1c14489af59905d084bf, type: 2}
+  - {fileID: 11400000, guid: 26b6d460c597d1347b9a00f5a0d756d7, type: 2}
+  - {fileID: 11400000, guid: 6730571961495fe4389293359d55210f, type: 2}
+  - {fileID: 11400000, guid: b6027a7c5f67b6d49a0f9330d2d572a3, type: 2}
+  shadowInitParams:
+    shadowAtlasWidth: 2048
+    shadowAtlasHeight: 2048
+    maxShadowDistance: 500
+    shadowCascadeCount: 4
+    shadowCascadeRatios:
+    - 0.05
+    - 0.15
+    - 0.3
+    - 0.5
+    shadowCascadeBorders:
+    - 0.2
+    - 0.2
+    - 0.2
+    - 0
+  shadowsAtlasInfos:
+  - punctualShadowAtlas:
+      width: 2048
+      height: 2048
+    directionalShadowAtlas:
+      width: 2048
+      height: 2048
+    areaShadowAtlas:
+      width: 2048
+      height: 2048
+  skyReflectionSize: 256
+  skyLightingOverrideLayerMask:
+    m_Bits: 0
+  increaseSssSampleCount: 0
+  increaseAlsovSampleCount: 0
+  increasePlanarReflectionSampleCount: 0
+  increaseBaseResolutionGlobally: 0
+  increaseBaseResolution:
+    x: 0
+    y: 0
+  increaseShadowResolutionGlobally: 0
+  increaseShadowResolution:
+    x: 0
+    y: 0
+  increaseShadowResolutionMode: 0
+  increaseLODBiasGlobally: 0
+  increaseLODBias: 1.2
+  increaseMaximumLODLevelGlobally: 0
+  increaseMaximumLODLevel: 0
+  overrideSunCookie: {fileID: 0}
+  overrideShadowLayerMask:
+    m_Bits: 0
+  customRenderPasses: []

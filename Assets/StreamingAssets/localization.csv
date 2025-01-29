@@ -1,0 +1,98 @@
+Key,en,uk
+Preset_Low,Low,Низький
+Preset_Medium,Medium,Середній
+Preset_High,High,Високий
+Preset_Ultra,Ultra,Ультра
+Resolution,Resolution,Роздільна здатність
+Fullscreen,Fullscreen,Повноекранний режим
+VSync,VSync,Вертикальна синхронізація
+ShadowDistance,Shadow Distance,Дальність промальовування тіней
+ShadowQuality,Shadow Quality,Якість тіней
+ShadowQuality_Low,Low,Низька
+ShadowQuality_Medium,Medium,Середня
+ShadowQuality_High,High,Висока
+ShadowResolution,Shadow Resolution,Роздільна здатність тіней
+ShadowCascades,Shadow Cascades,Каскади тіней
+SSAO,SSAO,SSAO
+SSAO_Enabled,Enabled,Увімкнено
+SSAO_Disabled,Disabled,Вимкнено
+SSAOQuality,SSAO Quality,Якість SSAO
+SSAOQuality_Low,Low,Низька
+SSAOQuality_Medium,Medium,Середня
+SSAOQuality_High,High,Висока
+SSGI,SSGI,SSGI
+SSGI_Enabled,Enabled,Увімкнено
+SSGI_Disabled,Disabled,Вимкнено
+SSGIQuality,SSGI Quality,Якість SSGI
+SSGIQuality_Low,Low,Низька
+SSGIQuality_Medium,Medium,Середня
+SSGIQuality_High,High,Висока
+VolumetricLighting,Volumetric Lighting,Об'ємне освітлення
+VolumetricLighting_Enabled,Enabled,Увімкнено
+VolumetricLighting_Disabled,Disabled,Вимкнено
+VolumetricLightingQuality,Volumetric Lighting Quality,Якість об'ємного освітлення
+VolumetricLightingQuality_Low,Low,Низька
+VolumetricLightingQuality_Medium,Medium,Середня
+VolumetricLightingQuality_High,High,Висока
+Bloom,Bloom,Світіння
+Bloom_Enabled,Enabled,Увімкнено
+Bloom_Disabled,Disabled,Вимкнено
+BloomIntensity,Bloom Intensity,Інтенсивність світіння
+MotionBlur,Motion Blur,Розмиття руху
+MotionBlur_Enabled,Enabled,Увімкнено
+MotionBlur_Disabled,Disabled,Вимкнено
+MotionBlurIntensity,Motion Blur Intensity,Інтенсивність розмиття руху
+DepthOfField,Depth of Field,Глибина різкості
+DepthOfField_Enabled,Enabled,Увімкнено
+DepthOfField_Disabled,Disabled,Вимкнено
+DepthOfFieldIntensity,Depth of Field Intensity,Інтенсивність глибини різкості
+Vignette,Vignette,Віньєтування
+Vignette_Enabled,Enabled,Увімкнено
+Vignette_Disabled,Disabled,Вимкнено
+VignetteIntensity,Vignette Intensity,Інтенсивність віньєтування
+TextureQuality,Texture Quality,Якість текстур
+TextureQuality_Low,Low,Низька
+TextureQuality_Medium,Medium,Середня
+TextureQuality_High,High,Висока
+TextureQuality_Ultra,Ultra,Ультра
+LODBias,LOD Bias,Зміщення LOD
+Resolution_Tooltip,Resolution of the game window.,Роздільна здатність ігрового вікна.
+Fullscreen_Tooltip,Toggle fullscreen mode.,Увімкнути/вимкнути повноекранний режим.
+VSync_Tooltip,Enable VSync to prevent screen tearing.,Увімкнути вертикальну синхронізацію для уникнення розривів зображення.
+QualityPreset_Tooltip,Select a preset with predefined graphics settings.,Виберіть пресет з попередньо визначеними налаштуваннями графіки.
+ShadowDistance_Tooltip,Maximum distance at which shadows are rendered.,Максимальна відстань, на якій відображаються тіні.
+ShadowQuality_Tooltip,Quality of shadow filtering.,Якість фільтрації тіней.
+ShadowQuality_Low,Low,Низька
+ShadowQuality_Medium,Medium,Середня
+ShadowQuality_High,High,Висока
+ShadowResolution_Tooltip,Resolution of the shadow maps.,Роздільна здатність карт тіней.
+ShadowCascades_Tooltip,Number of shadow cascades.,Кількість каскадів тіней.
+SSAO_Tooltip,Enable Screen Space Ambient Occlusion.,Увімкнути ефект імітації глобального освітлення (SSAO).
+SSAOQuality_Tooltip,Quality of Screen Space Ambient Occlusion.,Якість ефекту імітації глобального освітлення (SSAO).
+SSAOQuality_Low,Low,Низька
+SSAOQuality_Medium,Medium,Середня
+SSAOQuality_High,High,Висока
+SSGI_Tooltip,Enable Screen Space Global Illumination.,Увімкнути ефект глобального освітлення (SSGI).
+SSGIQuality_Tooltip,Quality of Screen Space Global Illumination.,Якість ефекту глобального освітлення (SSGI).
+SSGIQuality_Low,Low,Низька
+SSGIQuality_Medium,Medium,Середня
+SSGIQuality_High,High,Висока
+VolumetricLighting_Tooltip,Enable volumetric lighting.,Увімкнути об'ємне освітлення.
+VolumetricLightingQuality_Tooltip,Quality of volumetric lighting.,Якість об'ємного освітлення.
+VolumetricLightingQuality_Low,Low,Низька
+VolumetricLightingQuality_Medium,Medium,Середня
+VolumetricLightingQuality_High,High,Висока
+Bloom_Tooltip,Enable bloom effect.,Увімкнути ефект світіння.
+BloomIntensity_Tooltip,Intensity of the bloom effect.,Інтенсивність ефекту світіння.
+MotionBlur_Tooltip,Enable motion blur effect.,Увімкнути ефект розмиття руху.
+MotionBlurIntensity_Tooltip,Intensity of the motion blur effect.,Інтенсивність ефекту розмиття руху.
+DepthOfField_Tooltip,Enable depth of field effect.,Увімкнути ефект глибини різкості.
+DepthOfFieldIntensity_Tooltip,Distance of focus for depth of field.,Дистанція фокусування для ефекту глибини різкості.
+Vignette_Tooltip,Enable vignette effect.,Увімкнути ефект віньєтування.
+VignetteIntensity_Tooltip,Intensity of the vignette effect.,Інтенсивність ефекту віньєтування.
+TextureQuality_Tooltip,Quality of the textures.,Якість текстур.
+TextureQuality_Low,Low,Низька
+TextureQuality_Medium,Medium,Середня
+TextureQuality_High,High,Висока
+TextureQuality_Ultra,Ultra,Ультра
+LODBias_Tooltip,Level of detail bias.,Зміщення рівня деталізації.
